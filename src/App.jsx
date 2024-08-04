@@ -1,11 +1,14 @@
-import logo from "./logo.svg";
-import Header from "./components/Header";
 import "./index.css";
+import Header from "./components/Header";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <div className="bg-red-400 h-screen">
+    <div className="flex flex-col min-h-screen">
       <Header />
+      <div className="flex-grow">
+        <Home />
+      </div>
     </div>
   );
 }
