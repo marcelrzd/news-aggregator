@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import SearchBar from "../../components/SearchBar";
-import Filters from "../../components/Filters";
+
 import ArticleList from "../../components/ArticleList";
 import { fetchArticles } from "../../slices/articlesSlice";
 
@@ -20,7 +20,6 @@ const Home = () => {
   });
 
   useEffect(() => {
-    // Fetch articles when the page loads
     dispatch(fetchArticles({ searchTerm, filters }));
   }, [dispatch]);
 
@@ -38,9 +37,15 @@ const Home = () => {
   return (
     <div className="flex flex-grow h-full p-4">
       <div className="container">
-        <SearchBar searchTerm={searchTerm} onSearch={handleSearch} />
-        {/* <Filters filters={filters} onFilterChange={handleFilterChange} /> */}
-        <ArticleList articles={articles} />
+        <SearchBar
+          filters={filters}
+          searchTerm={searchTerm}
+          onSearch={handleSearch}
+        />
+
+        {articlesStatus === "loading" && <p>Loading articles...</p>}
+        {articlesStatus === "succeeded" && <ArticleList articles={articles} />}
+        {articlesStatus === "failed" && <p>Error: {error}</p>}
       </div>
     </div>
   );
