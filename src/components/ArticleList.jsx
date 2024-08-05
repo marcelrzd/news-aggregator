@@ -3,9 +3,14 @@ const ArticleList = ({ articles }) => {
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
       {articles.map((article, index) => (
         <div key={index} className="p-4 border border-gray-300 rounded-md">
-          <h2 className="text-xl font-bold">{article.title}</h2>
-          <p>{article.description}</p>
-          <div className="flex justify-between">
+          <div className="flex justify-center">
+            <span className="text-2xl">{article.source}</span>
+          </div>
+          <div className="">
+            <h2 className="text-xl font-bold">{article.title}</h2>
+            <p>{article.description}</p>
+          </div>
+          <div className="flex justify-between py-4">
             <h2 className="text-neutral-600">Author: {article.author}</h2>
             <h2 className="bottom-0">
               <a

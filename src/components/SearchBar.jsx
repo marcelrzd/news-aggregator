@@ -2,11 +2,15 @@ import React from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
-const SearchBar = ({ filters, searchTerm, onSearch }) => {
+const SearchBar = ({ filters, searchTerm, onSearch, onSearchClick }) => {
   return (
-    <div className="flex flex-row gap-2 py-4">
+    <div className="flex flex-col gap-2 py-4 sm:flex-row">
       <div className="flex">
-        <select className="p-2 border border-gray-300 rounded-md">
+        <select
+          className="w-full p-2 border border-gray-300 rounded-sm sm:w-28"
+          // value={filters.category || filters.source || filters.date} // Use the appropriate filter value
+          // onChange={(e) => onSearch(e.target.value)}
+        >
           <option value="">Filters</option>
           <option value="category">Category</option>
           <option value="source">Source</option>
@@ -20,7 +24,7 @@ const SearchBar = ({ filters, searchTerm, onSearch }) => {
         placeholder="Search for articles..."
         className="w-full p-2 border border-gray-300 rounded-md"
       />
-      <Button variant="outline" type="submit">
+      <Button variant="outline" type="button" onClick={onSearchClick}>
         Search
       </Button>
     </div>
