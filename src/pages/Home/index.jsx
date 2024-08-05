@@ -40,7 +40,7 @@ const Home = () => {
       <div className="container">
         <SearchBar searchTerm={searchTerm} onSearch={handleSearch} />
         {/* <Filters filters={filters} onFilterChange={handleFilterChange} /> */}
-        <ArticleList />
+        <ArticleList articles={articles} />
       </div>
     </div>
   );
