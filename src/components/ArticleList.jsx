@@ -29,7 +29,7 @@ const ArticleList = ({ articles }) => {
         </p>
       </div>
       <div className="p-4 border border-gray-300 rounded-md">
-        <h2 className="text-xl font-bold">teste</h2>
+        <h2 className="text-xl font-bold">jose</h2>
         <p>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime eaque
           earum exercitationem corporis. Nam voluptates accusantium, nemo est

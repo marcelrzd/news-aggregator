@@ -9,8 +9,8 @@ export const fetchArticles = createAsyncThunk(
     const newsApiArticles = await fetchNewsApiArticles(searchTerm, filters);
     const nytArticles = await fetchNytArticles(searchTerm, filters);
     const guardianArticles = await fetchGuardianArticles(searchTerm, filters);
-
-    return [...newsApiArticles, ...nytArticles, ...guardianArticles];
+    console.log("guardianAPI", guardianArticles);
+    return [...newsApiArticles, ...nytArticles];
   }
 );
 
