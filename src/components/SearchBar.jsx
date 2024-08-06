@@ -9,18 +9,17 @@ const SearchBar = ({
   onFilterChange,
   onSearchClick,
 }) => {
-  const handleSelectChange = (e) => {
-    const filterType = e.target.value;
-    const filterValue = prompt(`Enter value for ${filterType}:`);
-    onFilterChange(filterType, filterValue);
-  };
-
   return (
     <div className="flex flex-col gap-2 py-4 sm:flex-row">
       <div className="flex">
         <select
           className="w-full p-2 border border-gray-300 rounded-sm sm:w-28"
-          onChange={handleSelectChange}
+          onChange={(e) =>
+            onFilterChange(
+              e.target.value,
+              e.target.options[e.target.selectedIndex].text.toLowerCase()
+            )
+          }
         >
           <option value="">Filters</option>
           <option value="category">Category</option>

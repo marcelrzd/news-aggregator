@@ -8,13 +8,13 @@ const Home = () => {
   const dispatch = useDispatch();
   const articles = useSelector((state) => state.articles.items);
   const articlesStatus = useSelector((state) => state.articles.status);
-
+  const error = useSelector((state) => state.articles.error);
+  // articles.map((item) => console.log(item.source));
   console.log(articles);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [filters, setFilters] = useState("");
 
-  // Fetch articles on initial render
   useEffect(() => {
     dispatch(fetchArticles({ searchTerm, filters }));
   }, [dispatch]);
@@ -25,7 +25,6 @@ const Home = () => {
 
   const handleFilterChange = (filterType, value) => {
     setFilters(value);
-    dispatch(fetchArticles({ searchTerm, filters: value }));
   };
 
   const handleSearchClick = () => {
@@ -44,16 +43,17 @@ const Home = () => {
         />
 
         {articlesStatus === "loading" && <p>Loading articles...</p>}
-        {articlesStatus === "succeeded" && articles.length === 0 && (
+        {articlesStatus === "succeded" && articles.length === 0 && (
           <p>No Articles were found, please search again...</p>
         )}
-        {articlesStatus === "succeeded" && articles.length > 0 && (
-          <ArticleList articles={articles} />
-        )}
+        {articlesStatus === "succeeded" &&
+          (articles.length > 0 ? (
+            <ArticleList articles={articles} />
+          ) : (
+            <p>No Articles were found, please search again...</p>
+          ))}
 
-        {articlesStatus === "failed" && (
-          <p>There was an error while fetching the articles! </p>
-        )}
+        {articlesStatus === "failed" && <p>Error: {error}</p>}
       </div>
     </div>
   );

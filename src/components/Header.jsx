@@ -39,12 +39,12 @@ const Header = () => {
   return (
     <header className="p-4 font-semibold text-center text-gray-600 shadow-md">
       <div className="container flex justify-between">
-        <h1>News Aggregator</h1>
+        <h1 className="text-xl">News Aggregator</h1>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Settings className="cursor-pointer" size={32} />
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-56">
+          <DropdownMenuContent className="sm:w-56 w-80">
             <DropdownMenuLabel>Settings</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
@@ -69,7 +69,7 @@ const Header = () => {
                     </DialogHeader>
                     <div className="grid gap-4 py-4">
                       <div className="grid items-center grid-cols-4 gap-4">
-                        <Label htmlFor="name" className="text-right">
+                        <Label htmlFor="source" className="text-right">
                           Source
                         </Label>
                         <Select>
@@ -90,7 +90,7 @@ const Header = () => {
                         </Select>
                       </div>
                       <div className="grid items-center grid-cols-4 gap-4">
-                        <Label htmlFor="name" className="text-right">
+                        <Label htmlFor="authors" className="text-right">
                           Authors
                         </Label>
                         <Select>
