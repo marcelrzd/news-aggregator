@@ -4,23 +4,19 @@ const ArticleList = ({ articles }) => {
       {articles.map((article, index) => (
         <div
           key={index}
-          className="p-4 transition-all ease-in-out border rounded-md shadow-md"
+          className="pb-2 transition-all ease-in-out border rounded-md shadow-md "
         >
-          <div className="flex justify-center">
-            <span className="text-2xl">{article.source}</span>
+          <div className="top-0 flex justify-center p-2 px-4 bg-gray-200 ">
+            <span className="text-2xl font-bold">{article.source}</span>
           </div>
-          <div className="">
-            <h2 className="text-xl font-bold">{article.title}</h2>
-            <p>{article.description}</p>
+          <div className="p-3 h-44">
+            <h2 className="text-xl font-semibold">{article.title}</h2>
+            <span className="text-md">{article.description}</span>
           </div>
-          <div className="flex justify-between py-4">
-            <h2 className="text-neutral-600">Author: {article.author}</h2>
+          <div className="flex justify-between p-4 text-md">
+            <h2 className="text-gray-600">Author: {article.author}</h2>
             <h2 className="bottom-0">
-              <a
-                className="text-neutral-600"
-                target="_blank"
-                href={article.url}
-              >
+              <a className="text-gray-600" target="_blank" href={article.url}>
                 Read more...
               </a>
             </h2>
