@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import SearchBar from "../../components/SearchBar";
 import ArticleList from "../../components/ArticleList";
@@ -11,21 +11,18 @@ const Home = () => {
   const error = useSelector((state) => state.articles.error);
 
   const [searchTerm, setSearchTerm] = useState("");
-  const [filters, setFilters] = useState({
-    date: "",
-    category: "",
-    source: "",
-  });
+  const [filters, setFilters] = useState("");
+
+  useEffect(() => {
+    dispatch(fetchArticles({ searchTerm, filters }));
+  }, [dispatch]);
 
   const handleSearch = (term) => {
     setSearchTerm(term);
   };
 
   const handleFilterChange = (filterType, value) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      [filterType]: value,
-    }));
+    setFilters(value);
   };
 
   const handleSearchClick = () => {
@@ -39,6 +36,7 @@ const Home = () => {
           filters={filters}
           searchTerm={searchTerm}
           onSearch={handleSearch}
+          onFilterChange={handleFilterChange}
           onSearchClick={handleSearchClick}
         />
         {articlesStatus === "loading" && <p>Loading articles...</p>}

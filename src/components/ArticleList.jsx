@@ -2,7 +2,10 @@ const ArticleList = ({ articles }) => {
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
       {articles.map((article, index) => (
-        <div key={index} className="p-4 border border-gray-300 rounded-md">
+        <div
+          key={index}
+          className="p-4 transition-all ease-in-out border rounded-md shadow-md"
+        >
           <div className="flex justify-center">
             <span className="text-2xl">{article.source}</span>
           </div>

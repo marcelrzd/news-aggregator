@@ -2,11 +2,11 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchNewsApiArticles } from "../services/newsAPI";
 import { fetchNytArticles } from "../services/nytAPI";
 import { fetchGuardianArticles } from "../services/guardianAPI";
-import ArticleList from "../components/ArticleList";
 
 export const fetchArticles = createAsyncThunk(
   "articles/fetchArticles",
   async ({ searchTerm, filters }) => {
+    console.log("Fetching articles...", searchTerm, filters);
     const newsApiArticles = await fetchNewsApiArticles(searchTerm, filters);
     const nytArticles = await fetchNytArticles(searchTerm, filters);
     // const guardianArticles = await fetchGuardianArticles(searchTerm, filters);
