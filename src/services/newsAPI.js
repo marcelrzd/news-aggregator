@@ -23,7 +23,7 @@ export const fetchNewsApiArticles = async (searchTerm, filters) => {
     q: searchTerm,
     from: date || undefined,
     category: category || undefined,
-    sources: source ? formattedSearchTerm : "ESPN",
+    sources: source ? formattedSearchTerm : "bbc-news",
     pageSize: 40,
     apiKey: NEWS_API_KEY,
   };

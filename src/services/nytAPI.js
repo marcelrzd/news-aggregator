@@ -19,7 +19,7 @@ export const fetchNytArticles = async (searchTerm, filters) => {
   const { date, category, source } = filters;
 
   let formattedSearchTerm = getSearchQuery(searchTerm, source);
-  console.log("Formatted search term:", formattedSearchTerm === "");
+  console.log("Formatted search term:", formattedSearchTerm, source);
 
   const params = {
     q: formattedSearchTerm || null,

@@ -3,6 +3,14 @@ import { fetchNewsApiArticles } from "../services/newsAPI";
 import { fetchNytArticles } from "../services/nytAPI";
 // import { fetchGuardianArticles } from "../services/guardianAPI";
 
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are 0-based
+  const day = String(date.getDate()).padStart(2, "0");
+  const year = date.getFullYear();
+  return `${month}-${day}-${year}`;
+};
+
 export const fetchArticles = createAsyncThunk(
   "articles/fetchArticles",
   async ({ searchTerm, filters }) => {
@@ -19,7 +27,7 @@ export const fetchArticles = createAsyncThunk(
         url: article.url,
         author: article.author || "Unknown Author",
         source: article.source.name,
-        date: article.publishedAt,
+        date: formatDate(article.publishedAt),
         category: article.category || "General",
       }));
 
@@ -29,7 +37,7 @@ export const fetchArticles = createAsyncThunk(
         url: article.web_url,
         author: article.byline.original || "Unknown Author",
         source: "New York Times", // Ensure a consistent source name
-        date: article.pub_date,
+        date: formatDate(article.pub_date),
         category: article.section_name || "General",
       }));
 
