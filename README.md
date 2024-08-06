@@ -15,7 +15,7 @@ To install and run the application, follow these steps:
 ### Using Docker
 
 1. **Clone the repository:**
-   git clone https://github.com/your-username/news-aggregator.git
+   git clone https://github.com/marcelrzd/news-aggregator
    cd news-aggregator
 
 2. **Build the Docker image:**
