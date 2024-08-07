@@ -12,7 +12,7 @@ const ArticleList = ({ articles }) => {
           </div>
           <div className="flex flex-col gap-1 p-3 sm:h-44">
             <h2 className="text-lg font-semibold">{article.title}</h2>
-            <span className="truncate-3-lines text-md">
+            <span className="truncate-description text-md">
               {article.description}
             </span>
           </div>
