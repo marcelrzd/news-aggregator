@@ -67,3 +67,24 @@
     @apply bg-background text-foreground;
   }
 }
+
+.truncate-2-lines {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+.truncate-3-lines {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+.truncate-author {
+  width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

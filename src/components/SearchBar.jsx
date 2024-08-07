@@ -1,15 +1,8 @@
 import React from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import SelectFilter from "./SelectFilter";
 
-const SearchBar = ({
-  filters,
-  searchTerm,
-  onSearch,
-  onFilterChange,
-  onSearchClick,
-}) => {
+const SearchBar = ({ searchTerm, onSearch, onSearchClick }) => {
   return (
     <div className="flex flex-col w-full gap-4 py-4 sm:gap-2 sm:flex-row">
       <Input

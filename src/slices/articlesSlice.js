@@ -13,13 +13,13 @@ const formatDate = (dateString) => {
 
 export const fetchArticles = createAsyncThunk(
   "articles/fetchArticles",
-  async ({ searchTerm, filters }) => {
+  async (searchTerm) => {
     try {
       const [newsApiArticles, nytArticles, currentsArticles] =
         await Promise.all([
-          fetchNewsApiArticles(searchTerm, filters),
-          fetchNytArticles(searchTerm, filters),
-          fetchCurrentsArticles(searchTerm, filters),
+          fetchNewsApiArticles(searchTerm),
+          fetchNytArticles(searchTerm),
+          fetchCurrentsArticles(searchTerm),
         ]);
 
       const normalizedNewsApiArticles = newsApiArticles.map((article) => ({
