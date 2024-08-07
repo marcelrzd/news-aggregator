@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import SelectFilter from "./SelectFilter";
 
 const SearchBar = ({
   filters,
@@ -10,23 +11,7 @@ const SearchBar = ({
   onSearchClick,
 }) => {
   return (
-    <div className="flex flex-col gap-2 py-4 sm:flex-row">
-      <div className="flex">
-        <select
-          className="w-full p-2 border border-gray-300 rounded-sm sm:w-28"
-          onChange={(e) =>
-            onFilterChange(
-              e.target.value,
-              e.target.options[e.target.selectedIndex].text.toLowerCase()
-            )
-          }
-        >
-          <option value="">Filters</option>
-          <option value="category">Category</option>
-          <option value="source">Source</option>
-          <option value="date">Date</option>
-        </select>
-      </div>
+    <div className="flex flex-col w-full gap-4 py-4 sm:gap-2 sm:flex-row">
       <Input
         type="text"
         value={searchTerm}

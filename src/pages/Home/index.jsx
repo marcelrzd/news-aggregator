@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import SearchBar from "../../components/SearchBar";
 import ArticleList from "../../components/ArticleList";
 import { fetchArticles } from "../../slices/articlesSlice";
+import SelectFilter from "../../components/SelectFilter";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -34,13 +35,17 @@ const Home = () => {
   return (
     <div className="flex flex-grow h-full p-4">
       <div className="container">
-        <SearchBar
-          filters={filters}
-          searchTerm={searchTerm}
-          onSearch={handleSearch}
-          onFilterChange={handleFilterChange}
-          onSearchClick={handleSearchClick}
-        />
+        <div className="flex flex-col justify-between sm:gap-2 sm:flex-row">
+          <SelectFilter />
+
+          <SearchBar
+            filters={filters}
+            searchTerm={searchTerm}
+            onSearch={handleSearch}
+            onFilterChange={handleFilterChange}
+            onSearchClick={handleSearchClick}
+          />
+        </div>
 
         {articlesStatus === "loading" && <p>Loading articles...</p>}
         {articlesStatus === "succeded" && articles.length === 0 && (
