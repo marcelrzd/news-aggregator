@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchNewsApiArticles } from "../services/newsAPI";
 import { fetchNytArticles } from "../services/nytAPI";
-// import { fetchGuardianArticles } from "../services/guardianAPI";
+import { fetchCurrentsArticles } from "../services/currentsAPI";
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
@@ -15,11 +15,12 @@ export const fetchArticles = createAsyncThunk(
   "articles/fetchArticles",
   async ({ searchTerm, filters }) => {
     try {
-      const [newsApiArticles, nytArticles] = await Promise.all([
-        fetchNewsApiArticles(searchTerm, filters),
-        fetchNytArticles(searchTerm, filters),
-        // fetchGuardianArticles(searchTerm, filters),
-      ]);
+      const [newsApiArticles, nytArticles, currentsArticles] =
+        await Promise.all([
+          fetchNewsApiArticles(searchTerm, filters),
+          fetchNytArticles(searchTerm, filters),
+          fetchCurrentsArticles(searchTerm, filters),
+        ]);
 
       const normalizedNewsApiArticles = newsApiArticles.map((article) => ({
         title: article.title,
@@ -41,22 +42,23 @@ export const fetchArticles = createAsyncThunk(
         category: article.section_name || "General",
       }));
 
-      // const normalizedGuardianArticles = guardianArticles.map((article) => ({
-      //   title: article.webTitle,
-      //   description: article.fields.trailText,
-      //   url: article.webUrl,
-      //   author: article.fields.byline || "Unknown Author",
-      //   source: "The Guardian", // Ensure a consistent source name
-      //   date: article.webPublicationDate,
-      //   category: article.sectionName || "General",
-      // }));
+      const normalizedCurrentsArticles = currentsArticles.map((article) => ({
+        title: article.title,
+        description: article.description,
+        url: article.url,
+        author: article.author || "Unknown Author",
+        source: article.source || article.author || "Unknown Source",
+        date: formatDate(article.published),
+        category: article.category || "General",
+      }));
 
       return [
         ...normalizedNewsApiArticles,
         ...normalizedNytArticles,
-        // ...normalizedGuardianArticles,
+        ...normalizedCurrentsArticles,
       ];
     } catch (error) {
+      console.error("Failed to fetch articles:", error);
       throw new Error("Failed to fetch articles");
     }
   }
