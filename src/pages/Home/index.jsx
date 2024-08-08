@@ -10,14 +10,12 @@ const Home = () => {
   const articles = useSelector((state) => state.articles.items);
   const articlesStatus = useSelector((state) => state.articles.status);
   const error = useSelector((state) => state.articles.error);
-  console.log(articles);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState("");
   const [triggerFetch, setTriggerFetch] = useState(false); // To control fetch on submit
 
   useEffect(() => {
-    // Initial fetch when the component mounts
     dispatch(fetchArticles(""));
   }, [dispatch]);
 
