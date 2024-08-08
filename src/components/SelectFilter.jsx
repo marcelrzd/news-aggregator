@@ -51,8 +51,8 @@ const SelectFilter = ({ onFilterChange }) => {
             <SelectItem value="SA Transcripts">SA Transcripts</SelectItem>
             <SelectItem value="Amrit Dhillon">Amrit Dhillon</SelectItem>
             <SelectItem value="Philip Bump">Philip Bump</SelectItem>
-            <SelectItem value="Open in The Local app">
-              Open in The Local app
+            <SelectItem value="The New York Times">
+              The New York Times
             </SelectItem>
             <SelectItem value="Raymond Ibrahim">Raymond Ibrahim</SelectItem>
             <SelectItem value="Codie Bullen">Codie Bullen</SelectItem>
@@ -76,8 +76,8 @@ const SelectFilter = ({ onFilterChange }) => {
             <SelectItem value="SA Transcripts">SA Transcripts</SelectItem>
             <SelectItem value="Amrit Dhillon">Amrit Dhillon</SelectItem>
             <SelectItem value="Philip Bump">Philip Bump</SelectItem>
-            <SelectItem value="Open in The Local app">
-              Open in The Local app
+            <SelectItem value="The New York Times">
+              The New York Times
             </SelectItem>
             <SelectItem value="Raymond Ibrahim">Raymond Ibrahim</SelectItem>
             <SelectItem value="Codie Bullen">Codie Bullen</SelectItem>
